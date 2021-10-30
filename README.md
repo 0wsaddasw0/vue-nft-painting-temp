@@ -12,7 +12,68 @@
 ```javascript
 npm i vue-nft-painting
 ```
+```javascript
+<template>
+  <div>
+    <nft-painting v-bind:painting_settings="painting_settings"></nft-painting>
+  </div>
+</template>
 
+<script>
+import nftpainting from "vue-nft-painting";
+export default {
+  components: {
+    "nft-painting": nftpainting,
+  },
+  data: function () {
+    return {
+      painting_settings: {
+        showSelfDefine: true,
+        hideOriginalButton: false,
+        buttons: {
+          btn1: {
+            name: "按钮1",
+            method: function () {
+              console.log(1);
+            }
+          },
+          btn2: {
+            name: "按钮2",
+            method: function () {
+              console.log(2);
+            }
+          },
+          btn3: {
+            name: "按钮3",
+            method: function () {
+              console.log(3);
+            }
+          },
+          btn4: {
+            name: "按钮4",
+            method: function () {
+              console.log(4);
+            }
+          },
+          btn5: {
+            name: "按钮5",
+            method: function () {
+              console.log(5);
+            }
+          },
+          btn6: {
+            name: "按钮6",
+            method: function () {
+              console.log(6);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</script>
+```
 ## English
 
 ### Introduction
