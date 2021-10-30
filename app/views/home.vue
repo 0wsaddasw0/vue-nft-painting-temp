@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="body">
+      
       <div class="content">
         <canvas
           style="border: 1px solid #dcdfe6; margin: 10px"
