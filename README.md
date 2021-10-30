@@ -86,4 +86,65 @@ The vue-nft-painting is a tool to help painters create NFT works
 npm i vue-nft-painting
 ```
 
+```javascript
+<template>
+  <div>
+    <nft-painting v-bind:painting_settings="painting_settings"></nft-painting>
+  </div>
+</template>
+
+<script>
+import nftpainting from "vue-nft-painting";
+export default {
+  components: {
+    "nft-painting": nftpainting,
+  },
+  data: function () {
+    return {
+      painting_settings: {
+        showSelfDefine: true,
+        hideOriginalButton: false,
+        buttons: {
+          btn1: {
+            name: "btn1",
+            method: function () {
+              console.log(1);
+            }
+          },
+          btn2: {
+            name: "btn2",
+            method: function () {
+              console.log(2);
+            }
+          },
+          btn3: {
+            name: "btn3",
+            method: function () {
+              console.log(3);
+            }
+          },
+          btn4: {
+            name: "btn4",
+            method: function () {
+              console.log(4);
+            }
+          },
+          btn5: {
+            name: "btn5",
+            method: function () {
+              console.log(5);
+            }
+          },
+          btn6: {
+            name: "btn6",
+            method: function () {
+              console.log(6);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</script>
 
