@@ -12,13 +12,6 @@
 ```javascript
 npm i vue-nft-painting
 ```
-### 工具网站地址
-
-www.uonus.net
-
-### 视频教程
-
-https://www.bilibili.com/video/BV1gv411G7FG
 
 ## English
 
@@ -31,12 +24,5 @@ The vue-nft-painting is a tool to help painters create NFT works
 ```javascript
 npm i vue-nft-painting
 ```
-### Website address
-
-www.uonus.net
-
-### Video tutorial
-
-https://www.bilibili.com/video/BV1gv411G7FG
 
 
