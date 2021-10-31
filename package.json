@@ -1,6 +1,6 @@
 {
   "name": "vue-nft-painting",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "private": false,
   "watch": "webpack --watch",
   "scripts": {

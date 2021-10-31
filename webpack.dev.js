@@ -2,7 +2,6 @@ const path = require('path');
 const resolve = dir => path.resolve(__dirname, dir);
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './app/main.js',
   output: {

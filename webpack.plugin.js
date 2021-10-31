@@ -3,13 +3,12 @@
 var path = require('path');
 const resolve = dir => path.resolve(__dirname, dir);
 const VueLoaderPlugin = require('vue-loader/lib/plugin');//注意
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
     entry: './app/plugin.js', // 项目入口文件
     output: { // 配置输出选项
         path: path.resolve(__dirname, ''), // 配置输出的路径
         filename: 'index.js', // 配置输出的文件名
-        library: 'index', // 指定的就是你使用require时的模块名
+        library: 'nftpainting', // 指定的就是你使用require时的模块名
         libraryTarget: 'umd', // libraryTarget会生成不同umd的代码,可以只是commonjs标准的，也可以是指amd标准的，也可以只是通过script标签引入的
         umdNamedDefine: true // 会对 UMD 的构建过程中的 AMD 模块进行命名。否则就使用匿名的 define
     },
