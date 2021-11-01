@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="body">
-      
       <div class="content">
         <canvas
           style="border: 1px solid #dcdfe6; margin: 10px"
@@ -199,7 +198,7 @@ export default {
   },
   data: function () {
     return {
-      ws: "wss://uonus_images_download.coltstail.net/ws",
+      ws: "ws://localhost:3000/ws",
       copyTypes: ["原图", "变色1", "变色2", "变色3"],
       checkedCopyType: ["原图"],
       isShowSlider: false, //是否显示生成图片的进度条 Whether to display the progress bar of the generated picture

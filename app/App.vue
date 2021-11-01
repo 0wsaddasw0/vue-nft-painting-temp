@@ -52,9 +52,9 @@ export default {
               console.log(333333);
             },
           }
-        },
-      },
-    };
-  },
+        }
+      }
+    }
+  }
 };
 </script>

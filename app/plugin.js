@@ -1,4 +1,4 @@
-import nftpainting from './views/home.vue';
+import nftpainting from './views/plugin.vue';
 nftpainting.install = function(Vue) {
   Vue.component(nftpainting.name, nftpainting);
 };
