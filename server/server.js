@@ -112,6 +112,8 @@ function draw(color, alpha, positionX, positionY, size, ctx) {
     ctx.fillRect(size * positionX, size * positionY, size, size);
 }
 
+
+
 function clearCanvas(size) {
     for (let i = 0; i < 24; i++) {
         for (let j = 0; j < 24; j++) {
