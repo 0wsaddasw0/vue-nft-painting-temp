@@ -746,6 +746,8 @@ export default {
       this.reDrawing();
     },
     initCanvas() {
+      let sUserAgent = navigator.userAgent.toLowerCase();
+      let bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
       this.canvas = document.getElementById("myCanvas");
       this.preCanvas = document.getElementById("canvasPrew");
       this.ctx = this.canvas.getContext("2d");
@@ -759,7 +761,8 @@ export default {
           this.ctx.fillRect(20 * i, 20 * j, 20, 20);
         }
       }
-      this.canvas.addEventListener("mousemove", (e) => {
+      this.canvas.addEventListener((!bIsIpad)?"mousemove":"touchmove", (e) => {
+        (!bIsIpad)?"":(e = e.changedTouches[0])
         if (!this.isEditing) {
           return;
         }
@@ -773,7 +776,8 @@ export default {
         }
       });
 
-      this.canvas.addEventListener("mousedown", (e) => {
+      this.canvas.addEventListener((!bIsIpad)?"mousedown":"touchstart", (e) => {
+        (!bIsIpad)?"":(e = e.changedTouches[0])
         if (!this.isEditing) {
           this.$message({
             message:
@@ -791,7 +795,8 @@ export default {
         }
       });
 
-      this.canvas.addEventListener("mouseup", (e) => {
+      this.canvas.addEventListener((!bIsIpad)?"mouseup":"touchend", (e) => {
+        (!bIsIpad)?"":(e = e.changedTouches.Touch)
         if (!this.isEditing) {
           return;
         }
@@ -800,7 +805,8 @@ export default {
         this.saveDrawing();
         this.drawing = false;
       });
-      this.preCanvas.addEventListener("mousedown", (e) => {
+      this.preCanvas.addEventListener((!bIsIpad)?"mousedown":"touchstart", (e) => {
+        (!bIsIpad)?"":(e = e.changedTouches[0])
         this.$message({
           message: "此处显示图像，右侧才是画板",
           type: "warning",
