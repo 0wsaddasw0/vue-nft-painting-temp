@@ -1,14 +1,17 @@
 <template>
   <div>
+    <introduce></introduce>
     <nft-painting v-bind:painting_settings="painting_settings"></nft-painting>
   </div>
 </template>
 
 <script>
 import nftpainting from "./plugin.js";
+import introduce from "@view/introduce.vue";
 export default {
   components: {
     "nft-painting": nftpainting,
+    "introduce":introduce
   },
   data: function () {
     return {
