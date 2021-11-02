@@ -58,12 +58,7 @@ function getCombinationMode(imageData) {
 }
 
 
-function hasRepeat(item,imageNames){
-    let arr = imageNames.filter((i)=>item==i)
-            return arr.length>1
-        }
-    return arr.length>1
-}
+
 function getRepeatIndexArray(imageNames,item){
     let indexArray = [];
     for(let i = 0;i<imageNames.length;i++){
