@@ -3,7 +3,7 @@
     <el-menu
       class="el-menu-demo"
       mode="horizontal"
-      style="display: flex; align-items: center; height: 100px"
+      style="display: flex; align-items: center; height: 80px"
     >
       <el-menu-item style="font-size: 38px; color: black"
         ><div class="logo"></div>

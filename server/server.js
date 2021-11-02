@@ -12,12 +12,7 @@ var ctx = canvas.getContext('2d');
 expressWs(app);  //将 express 实例上绑定 websock 的一些方法
 app.ws("/ws", function (ws, req) {
     ws.on("message", function (data) {
-        // console.log(JSON.parse(data)["image"]["图层1"][0]["image"]);
-        // let data = JSON.parse(data);
-        // ws.send("这是第三次发送信息");
-        // ws.send("这是第4次发送信息");
-        // ws.send("这是第5次发送信息");
-        getImages(JSON.parse(data), 20,ws);
+        getImages(JSON.parse(data), 20, ws);
     });
 });
 
@@ -34,19 +29,11 @@ function descartes(nums) {
 function getCombinationMode(imageData) {
     let imageSubs = []
     let combinationMode = [];
-    // let repeatArrs = [];
     for (let i = 9; i >= 0; i--) {
         let arr = [];
         let imageNames = imageData["imageName"][i]["imageName"];
         for (let j = 0; j < imageNames.length; j++) {
             arr.push(j);
-            // let repeatArr = imageNames.filter((item)=>{
-            //     let arr = imageNames.filter((i)=>item==i)
-            //     return arr.length>1
-            // })
-            // if(repeatArr!=[]){
-            //     repeatArrs.push(repeatArr);
-            // }
         }
         if (arr.length > 0) {
             imageSubs.push(arr);
@@ -54,7 +41,6 @@ function getCombinationMode(imageData) {
             imageSubs.push([0]);
         }
     }
-    // console.log(repeatArrs);
     combinationMode = descartes(imageSubs);
     return combinationMode
 }
@@ -75,9 +61,9 @@ function getImages(imageData, size, ws) {
     let combinationMode = getCombinationMode(imageData)
     fs.mkdirSync(`./out/${fileId}`);
     let resJson = {
-        "current":"",
-        "count":"",
-        "data":""
+        "current": "",
+        "count": "",
+        "data": ""
     }
     console.log(combinationMode);
     for (let j = 0; j < combinationMode.length; j++) {
@@ -90,7 +76,7 @@ function getImages(imageData, size, ws) {
                 drawOneImage(imageData["image"][levelName][combinationMode[j][i]], size);
             }
             base64Data = canvas.toDataURL().replace(/^data:image\/\w+;base64,/, ""),
-            dataBuffer = new Buffer(base64Data, 'base64');
+                dataBuffer = new Buffer(base64Data, 'base64');
         }
         fs.writeFileSync(`./out/${fileId}/${j}out.png`, dataBuffer, function (err) {
         });
@@ -132,7 +118,6 @@ function drawOneImage(imageData, size) {
         for (let j = 0; j < 24; j++) {
             let k = j * 24 + i;
             if (imageData['image'][k] == 1) {
-                // draw(changeColor(imageData['color'][k],type), imageData['alpha'][k], i, j, size, ctx);
                 draw(imageData['color'][k], imageData['alpha'][k], i, j, size);
             }
         }

@@ -371,9 +371,7 @@ export default {
     },
   },
   created: function () {
-    this.imageDataArray = JSON.parse(JSON.stringify(this.zeroData)); //将空图数据赋值给画板  Assign empty image data to the drawing board
-    this.colorDataArray = JSON.parse(JSON.stringify(this.zeroData)); //将空图数据赋值给画板  Assign empty image data to the drawing board
-    this.alphaDataArray = JSON.parse(JSON.stringify(this.zeroData)); //将空图数据赋值给画板  Assign empty image data to the drawing board
+    this.clearDataArray();
     let that = this;
     function keyUp(e) {
       //绘图工具快捷键  Drawing tool shortcuts
@@ -491,11 +489,9 @@ export default {
           datasLength.push(this.submitData[key].length);
         }
       }
-
       function zeroToOne(num) {
         return num == 0 ? 1 : num;
       }
-
       function calculate(array) {
         let isZero = true;
         let sum = 1;
@@ -581,9 +577,7 @@ export default {
     },
     chooseImage(array) {
       this.isEditing = false;
-      this.imageDataArray = JSON.parse(JSON.stringify(this.zeroData));
-      this.colorDataArray = JSON.parse(JSON.stringify(this.zeroData));
-      this.alphaDataArray = JSON.parse(JSON.stringify(this.zeroData));
+      this.clearDataArray()
       this.imageChoosed[array[0]] = JSON.parse(
         JSON.stringify(this.submitData[array[0]][array[1]])
       );
@@ -623,9 +617,7 @@ export default {
       this.imageChoosed[array[0]] = -1;
       this.imageChoosedRadio[array[0]] = -1;
       this.editingImage = [0, 0];
-      this.imageDataArray = JSON.parse(JSON.stringify(this.zeroData));
-      this.colorDataArray = JSON.parse(JSON.stringify(this.zeroData));
-      this.alphaDataArray = JSON.parse(JSON.stringify(this.zeroData));
+      this.clearDataArray()
       let tempData = JSON.parse(
         JSON.stringify(this.dataStringToJsonTemp(this.submitData))
       );
@@ -680,9 +672,7 @@ export default {
       this.imageChoosed[array[0]] = -1;
       this.imageChoosedRadio[array[0]] = -1;
       this.editingImage = [0, 0];
-      this.imageDataArray = JSON.parse(JSON.stringify(this.zeroData));
-      this.colorDataArray = JSON.parse(JSON.stringify(this.zeroData));
-      this.alphaDataArray = JSON.parse(JSON.stringify(this.zeroData));
+      this.clearDataArray()
       this.submitData[array[0]].splice(array[1], 1);
       this.imageNames[array[0]]["imageName"].splice(array[1], 1);
       this.prewCanvas();
@@ -702,9 +692,7 @@ export default {
         this.editImage([index - 1, this.imageChoosedRadio[index - 1]]);
       } else {
         this.isEditing = false;
-        this.imageDataArray = JSON.parse(JSON.stringify(this.zeroData));
-        this.colorDataArray = JSON.parse(JSON.stringify(this.zeroData));
-        this.alphaDataArray = JSON.parse(JSON.stringify(this.zeroData));
+        this.clearDataArray()
         this.prewCanvas();
         this.reDrawing();
       }
@@ -949,49 +937,6 @@ export default {
       };
       reader.readAsText(file, "utf-8");
     },
-    loadTextFromFileNew(e) {
-      const file = e.target.files[0];
-      let name = file.name.split(".").splice(-1).toString();
-      if (name !== "txt") {
-        this.$message({
-          message: "文件类型错误,请重新选择文件",
-          type: "warning",
-        });
-        return;
-      }
-      let reader = new FileReader();
-      if (typeof FileReader === "undefined") {
-        this.$message({
-          message: "您的浏览器不支持",
-          type: "warning",
-        });
-      }
-      reader.onload = (e) => {
-        try {
-          this.submitData = this.dataJsonToString(
-            JSON.parse(reader.result)["image"]
-          );
-          this.imageNames = this.dataJsonToString(
-            JSON.parse(reader.result)["imageName"]
-          );
-        } catch (error) {
-          this.$message({
-            message: "文件数据格式错误,请重新选择文件",
-            type: "warning",
-          });
-          return;
-        }
-        this.imageDataArray = JSON.parse(JSON.stringify(this.zeroData));
-        this.colorDataArray = JSON.parse(JSON.stringify(this.zeroData));
-        this.alphaDataArray = JSON.parse(JSON.stringify(this.zeroData));
-        this.isEditing = false;
-        this.imageChoosed = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
-        this.imageChoosedRadio = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
-        this.prewCanvas();
-        this.reDrawing();
-      };
-      reader.readAsText(file, "utf-8");
-    },
     download(filename, text) {
       var pom = document.createElement("a");
       pom.setAttribute(
@@ -1187,6 +1132,11 @@ export default {
       this.copyImageIndex = array;
       this.imageCopyVisible = true;
     },
+    clearDataArray(){
+      this.imageDataArray = JSON.parse(JSON.stringify(this.zeroData));
+      this.colorDataArray = JSON.parse(JSON.stringify(this.zeroData));
+      this.alphaDataArray = JSON.parse(JSON.stringify(this.zeroData));
+    } 
   },
 };
 </script>
@@ -1206,7 +1156,7 @@ export default {
 }
 
 .content {
-  height: 620px;
+  height: 580px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1218,7 +1168,7 @@ export default {
 }
 
 .buttons {
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
